@@ -1,25 +1,23 @@
 <script setup>
-import FloatingConfigurator from '@/components/FloatingConfigurator.vue';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
 </script>
 
 <template>
-    <FloatingConfigurator />
-    <div class="bg-surface-50 dark:bg-surface-950 flex items-center justify-center min-h-screen min-w-[100vw] overflow-hidden">
-        <div class="flex flex-col items-center justify-center">
-            <div style="border-radius: 56px; padding: 0.3rem; background: linear-gradient(180deg, rgba(247, 149, 48, 0.4) 10%, rgba(247, 149, 48, 0) 30%)">
-                <div class="w-full bg-surface-0 dark:bg-surface-900 py-20 px-8 sm:px-20 flex flex-col items-center" style="border-radius: 53px">
-                    <div class="gap-4 flex flex-col items-center">
-                        <div class="flex justify-center items-center border-2 border-orange-500 rounded-full" style="width: 3.2rem; height: 3.2rem">
-                            <i class="text-orange-500 pi pi-fw pi-lock text-2xl!"></i>
-                        </div>
-                        <h1 class="text-surface-900 dark:text-surface-0 font-bold text-4xl lg:text-5xl mb-2">Access Denied</h1>
-                        <span class="text-muted-color mb-8">You do not have the necessary permisions. Please contact admins.</span>
-                        <img src="/demo/images/access/asset-access.svg" alt="Access denied" class="mb-8" width="80%" />
-                        <div class="col-span-12 mt-8 text-center">
-                            <Button as="router-link" label="Go to Dashboard" to="/" severity="warn" />
-                        </div>
-                    </div>
-                </div>
+    <div class="surface-ground flex align-items-center justify-content-center min-h-screen overflow-hidden">
+        <div class="flex flex-column align-items-center justify-content-center">
+            <div class="w-full surface-card py-8 px-6 sm:px-8 shadow-2 border-round-xl text-center" style="max-width: 400px">
+                <i class="pi pi-lock text-6xl text-red-500 mb-4"></i>
+                <h1 class="text-900 text-3xl font-bold mb-3">Hozzáférés megtagadva</h1>
+                <p class="text-color-secondary mb-5">
+                    Nincs jogosultsága az oldal megtekintéséhez.
+                </p>
+                <Button 
+                    label="Vissza a főoldalra" 
+                    icon="pi pi-home"
+                    @click="router.push('/')"
+                />
             </div>
         </div>
     </div>

@@ -1,25 +1,23 @@
 <script setup>
-import FloatingConfigurator from '@/components/FloatingConfigurator.vue';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
 </script>
 
 <template>
-    <FloatingConfigurator />
-    <div class="bg-surface-50 dark:bg-surface-950 flex items-center justify-center min-h-screen min-w-[100vw] overflow-hidden">
-        <div class="flex flex-col items-center justify-center">
-            <div style="border-radius: 56px; padding: 0.3rem; background: linear-gradient(180deg, rgba(233, 30, 99, 0.4) 10%, rgba(33, 150, 243, 0) 30%)">
-                <div class="w-full bg-surface-0 dark:bg-surface-900 py-20 px-8 sm:px-20 flex flex-col items-center" style="border-radius: 53px">
-                    <div class="gap-4 flex flex-col items-center">
-                        <div class="flex justify-center items-center border-2 border-pink-500 rounded-full" style="height: 3.2rem; width: 3.2rem">
-                            <i class="pi pi-fw pi-exclamation-circle text-2xl! text-pink-500"></i>
-                        </div>
-                        <h1 class="text-surface-900 dark:text-surface-0 font-bold text-5xl mb-2">Error Occured</h1>
-                        <span class="text-muted-color mb-8">Requested resource is not available.</span>
-                        <img src="/demo/images/error/asset-error.svg" alt="Error" class="mb-8" width="80%" />
-                        <div class="col-span-12 mt-8 text-center">
-                            <Button as="router-link" label="Go to Dashboard" to="/" severity="danger" />
-                        </div>
-                    </div>
-                </div>
+    <div class="surface-ground flex align-items-center justify-content-center min-h-screen overflow-hidden">
+        <div class="flex flex-column align-items-center justify-content-center">
+            <div class="w-full surface-card py-8 px-6 sm:px-8 shadow-2 border-round-xl text-center" style="max-width: 400px">
+                <i class="pi pi-exclamation-triangle text-6xl text-orange-500 mb-4"></i>
+                <h1 class="text-900 text-3xl font-bold mb-3">Hiba történt</h1>
+                <p class="text-color-secondary mb-5">
+                    Váratlan hiba történt. Kérjük, próbálja újra később.
+                </p>
+                <Button 
+                    label="Vissza a főoldalra" 
+                    icon="pi pi-home"
+                    @click="router.push('/')"
+                />
             </div>
         </div>
     </div>
